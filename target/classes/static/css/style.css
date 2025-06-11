@@ -1,0 +1,312 @@
+/* style.css - ИТОГОВЫЙ СУПЕР КРУТОЙ ОРИГИНАЛЬНЫЙ ДИЗАЙН */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+    /* Градиентная палитра */
+    --gradient-start: #89f7fe; /* Светло-голубой/Циан */
+    --gradient-end: #66a6ff;   /* Светло-синий */
+
+    /* Цвета для действий */
+    --action-primary: #ff6b6b; /* Кораллово-розовый (яркий акцент) */
+    --action-primary-hover: #ff4757; /* Темнее для наведения */
+    --action-secondary: #4dabf7; /* Приятный синий для второстепенных действий и ссылок-описаний */
+    --action-secondary-hover: #339af0;
+    --action-danger: #e74c3c; /* Красный для удаления */
+    --action-danger-hover: #c0392b;
+    --action-neutral: #adb5bd; /* Нейтральный серый для "Отмены" и т.п. */
+    --action-neutral-hover: #868e96;
+
+    /* Текстовые и UI цвета */
+    --text-color: #2c3e50; /* Темно-сине-серый для основного текста */
+    --text-light: #ffffff; /* Белый текст для контрастных фонов */
+    --container-bg: rgba(255, 255, 255, 0.65); /* Полупрозрачный белый для "матового стекла" */
+    --container-border: rgba(255, 255, 255, 0.18); /* Тонкая светлая граница для контейнеров */
+    --input-bg: rgba(255, 255, 255, 0.8); /* Фон для полей ввода */
+    --input-border: #ced4da; /* Граница для полей ввода */
+    --table-header-bg: rgba(255, 255, 255, 0.4); /* Очень легкий фон для заголовков таблицы */
+
+    /* Цвета для приоритетов */
+    --priority-high-bg: #ff8a80; /* Мягкий красный */
+    --priority-medium-bg: #ffd180; /* Мягкий оранжевый */
+    --priority-low-bg: #b9f6ca; /* Мягкий зеленый */
+    --priority-text: var(--text-color); /* Темный текст на светлых значках приоритета */
+
+    --font-family: 'Roboto', sans-serif;
+    --base-font-size: 16px;
+    --border-radius: 10px; /* Более скругленные углы */
+    --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Мягкая, выраженная тень */
+    --transition-speed: 0.25s;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--base-font-size);
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+    background-attachment: fixed;
+    color: var(--text-color);
+    margin: 0;
+    padding: 25px;
+    line-height: 1.65;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.container, .form-container {
+    max-width: 960px;
+    margin: 30px auto;
+    padding: 35px;
+    background: var(--container-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--container-border);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+.form-container {
+    max-width: 680px;
+}
+
+h1 {
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 35px;
+    font-weight: 700;
+    font-size: 2.8em;
+    letter-spacing: -1.5px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+}
+
+h2.list-header {
+    font-size: 1.7em;
+    color: var(--text-color);
+    margin-bottom: 25px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--action-primary);
+    font-weight: 500;
+}
+
+/* --- Стили таблицы --- */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 30px;
+    background-color: rgba(255,255,255,0.5);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+}
+th, td {
+    padding: 16px 20px;
+    text-align: left;
+    vertical-align: middle;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+th {
+    background: var(--table-header-bg);
+    color: var(--text-color);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    letter-spacing: 0.8px;
+}
+tr:last-child td { border-bottom: none; }
+tr:hover { background-color: rgba(255, 255, 255, 0.3); }
+
+/* В src/main/resources/static/css/style.css */
+
+/* ... (остальные стили остаются как есть) ... */
+
+/* --- Стили для ссылки-описания задачи (ДЕЛАЕМ БОЛЕЕ ЗНАЧИМОЙ) --- */
+a.task-edit-link {
+    text-decoration: none; /* Убираем стандартное подчеркивание */
+    color: var(--text-color); /* ИСПОЛЬЗУЕМ ОСНОВНОЙ ТЕМНЫЙ ЦВЕТ ТЕКСТА */
+    font-weight: 500; /* Шрифт средней насыщенности (или можно попробовать 600 для еще большей "весомости") */
+    font-size: 1.05em; /* Немного крупнее основного текста в ячейке */
+    transition: color var(--transition-speed) ease, text-decoration var(--transition-speed) ease;
+    display: inline-block; /* Для лучшего контроля и области клика */
+}
+
+a.task-edit-link:hover {
+    color: var(--action-primary); /* Яркий коралловый цвет при наведении (или var(--action-secondary) если коралловый слишком) */
+    text-decoration: underline; /* Показываем подчеркивание при наведении */
+}
+
+/* Описание для выполненных задач */
+.completed-true .task-description {
+    /* text-decoration: line-through; - это свойство будет у ссылки ниже, если нужно для всей ячейки */
+    opacity: 0.7; /* Делаем всю ячейку с описанием выполненной задачи более бледной */
+}
+
+.completed-true .task-description a.task-edit-link {
+    color: #78909c; /* Приглушенный цвет для выполненных задач */
+    font-weight: 400; /* Обычная насыщенность, не выделяем так сильно */
+    text-decoration: line-through; /* Зачеркивание самой ссылки */
+}
+
+.completed-true .task-description a.task-edit-link:hover {
+    color: var(--action-primary); /* При наведении цвет все равно становится акцентным */
+    text-decoration: underline; /* Подчеркивание при наведении (можно и без него для выполненных) */
+    opacity: 1; /* Полная непрозрачность при наведении, если родитель ее уменьшает */
+}
+
+/* --- Значки Приоритета --- */
+.priority-badge {
+    padding: 7px 14px;
+    border-radius: 20px;
+    color: var(--priority-text);
+    font-size: 0.8em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    min-width: 100px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+.priority-LOW { background-color: var(--priority-low-bg); }
+.priority-MEDIUM { background-color: var(--priority-medium-bg); }
+.priority-HIGH { background-color: var(--priority-high-bg); }
+
+/* --- Кнопки --- */
+.button, button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 25px;
+    margin: 6px;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all var(--transition-speed) ease-in-out;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9em;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    outline: none;
+}
+.button:hover, button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 18px rgba(0,0,0,0.12), 0 3px 6px rgba(0,0,0,0.1);
+}
+.button:active, button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.btn-add { background-color: var(--action-primary); color: var(--text-light); }
+.btn-add:hover { background-color: var(--action-primary-hover); }
+
+.actions .button { padding: 8px 18px; font-size: 0.8em; }
+.actions .btn-toggle { background-color: var(--action-secondary); color: var(--text-light); }
+.actions .btn-toggle:hover { background-color: var(--action-secondary-hover); }
+/* Кнопку Edit мы убрали из actions, но стили можно оставить на будущее */
+/* .actions .btn-edit { background-color: var(--action-neutral); color: var(--text-light); } */
+/* .actions .btn-edit:hover { background-color: var(--action-neutral-hover); } */
+.actions .btn-delete { background-color: var(--action-danger); color: var(--text-light); }
+.actions .btn-delete:hover { background-color: var(--action-danger-hover); }
+
+/* --- Стили Формы --- */
+.form-group label { font-weight: 500; color: var(--text-color); margin-bottom: 10px; }
+.form-group input[type="text"], .form-group select {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
+    border-radius: var(--border-radius);
+    box-sizing: border-box;
+    font-size: 1em;
+    color: var(--text-color);
+    transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+.form-group input[type="text"]:focus, .form-group select:focus {
+    outline: none;
+    border-color: var(--action-primary);
+    box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.2);
+}
+/* Статический текст в форме (для даты создания) */
+.form-static-text {
+    padding: 12px 0;
+    font-size: 1em;
+    color: #555;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.button-group { margin-top: 35px; text-align: right; }
+.button-group .btn-save { background-color: var(--action-primary); color: var(--text-light); }
+.button-group .btn-save:hover { background-color: var(--action-primary-hover); }
+.button-group .btn-cancel { background-color: var(--action-neutral); color: var(--text-light); margin-right: 12px;}
+.button-group .btn-cancel:hover { background-color: var(--action-neutral-hover); }
+
+/* --- Вкладки (Tabs) --- */
+.nav-tabs {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 30px;
+    display: flex;
+    border-bottom: none;
+}
+.nav-tabs li { margin-right: 10px; }
+.nav-tabs li a {
+    display: block;
+    padding: 14px 28px;
+    text-decoration: none;
+    background-color: rgba(255,255,255,0.3);
+    color: var(--text-color);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    font-weight: 500;
+    transition: all var(--transition-speed) ease;
+    border: 1px solid transparent;
+    border-bottom: none;
+    position: relative;
+    top: 2px;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.03) inset;
+}
+.nav-tabs li a:hover {
+    background-color: rgba(255,255,255,0.5);
+    color: var(--action-primary);
+    transform: translateY(-2px);
+}
+.nav-tabs li a.active {
+    background-color: var(--container-bg);
+    color: var(--action-primary);
+    font-weight: 700;
+    border-color: var(--container-border) var(--container-border) var(--container-bg) var(--container-border);
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.06);
+    z-index: 1;
+}
+
+/* --- Прочее --- */
+/* .task-description был стилизован в секции a.task-edit-link и .completed-true .task-description a.task-edit-link */
+.no-tasks-message { text-align: center; padding: 35px; background-color: rgba(255,255,255,0.4); border-radius: var(--border-radius); color: #546e7a; font-style: italic; font-size: 1.1em; }
+
+/* Сортируемые заголовки таблицы */
+th.sortable a { color: var(--text-color); text-decoration: none; display: flex; align-items: center; transition: color var(--transition-speed); }
+th.sortable a:hover { color: var(--action-primary); }
+th.sortable .sort-arrow { margin-left: 10px; font-size: 1.1em; line-height: 1; }
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    body { padding: 15px; }
+    .container, .form-container { margin-left: 0; margin-right: 0; padding: 25px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);}
+    h1 { font-size: 2.2em; letter-spacing: -1px; }
+    h2.list-header { font-size: 1.4em; }
+
+    .actions .button { display: block; width: 100%; margin: 8px 0; text-align: center; }
+
+    .nav-tabs { flex-direction: column; }
+    .nav-tabs li { margin-right: 0; margin-bottom: 3px; }
+    .nav-tabs li a { border-radius: var(--border-radius); text-align: center;}
+    .nav-tabs li a.active { border-radius: var(--border-radius); }
+
+    .button-group { text-align: center; }
+    .button-group button { width: auto; display: inline-block; margin: 8px 5px; padding: 12px 20px;}
+}
+@media (max-width: 480px) {
+    .button-group button { width: 100%; margin-bottom: 12px; }
+    th, td { padding: 12px 10px; font-size: 0.9em; }
+    .priority-badge { padding: 6px 10px; font-size: 0.75em; min-width: 80px;}
+}
